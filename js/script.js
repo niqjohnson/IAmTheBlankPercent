@@ -121,16 +121,16 @@ $(document).ready(function() {
 			var incomeHash = blankPercent.calculateHouseholdNumbers (adjustedIncome);
 		}
 		if ($('body').hasClass('incomeLowerThanFloor')) {
-			incomeHash.numberYouAreAbove = 'Basically no';
+			incomeHash.numberYouAreAbove = 'very few';
 			incomeHash.integerPercentile = 1;
 			incomeHash.iAmThePercentile = 99;
-			incomeHash.numberYouAreBelow = 'Basically all';
+			incomeHash.numberYouAreBelow = 'basically all';
 		}
 		else if ($('body').hasClass('incomeHigherThanCeiling')) {
-			incomeHash.numberYouAreAbove = 'Basically all';
+			incomeHash.numberYouAreAbove = 'basically all';
 			incomeHash.integerPercentile = 99;
 			incomeHash.iAmThePercentile = 1;
-			incomeHash.numberYouAreBelow = 'Basically no';
+			incomeHash.numberYouAreBelow = 'very few';
 		}
 		else {
 			incomeHash.numberYouAreAbove = blankPercent.addCommas(Math.round(incomeHash.numberYouAreAbove));
