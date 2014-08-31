@@ -1,0 +1,679 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>I Am the Blank Percent</title>
+	<meta name="description" content="A quick calculator to show you how your income compares to other American earners">
+	<!--<meta name="viewport" content="width=device-width">-->
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/libs/modernizr-2.5.2.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<header>
+		<h1>I am the <span id="percent"><span id="percentText" class="notCalculated">BLANK</span></span> percent</h1>
+	</header>
+	<div id="main" role="main">
+		<div id="detailsIntro">
+			Your income of <span id="detailsIntroSpacer"> </span> lets you say:
+		</div>
+		<div id="incomeFormIntro">
+			<p>Where do you fall in the range of American earners?</p>
+			<p>Enter how much <a class="incomeTypeSelector" href="#">you earn in one year</a> and find out.</p>
+		</div>
+		<div id="selectIncomeType">
+			<a id="individualIncome" class="selectedIncomeType" href="#">Use individual income</a>
+			<a id="householdIncome" href="#">Use household income</a>
+		</div>
+		<form action="#" id="incomeForm">
+			<label id="incomeFormLabel" for="income">$</label>
+			<input type="text" name="income" id="income" value="" />
+			<input type="submit" id="calculate" title="Calculate your percent" value=""></input>
+		</form>
+		<p id="incomeFormInstructions">(everything <span class="instructionsSubject">just you</span> earned before taxes)</p>
+		<div id="details">
+			<p><span id="distributionAverage">The average American <span class="adultOrHousehold"></span> earns $<span id="averageIncome"></span> per year. <span class="youIndividualOrHousehold"></span> earn <span id="averageDifference"></span> that.</span> <span id="distributionBelowMe">About <span id="numberBelow"></span> <span class="adultOrHousehold"></span>s earn less. That puts you in the <strong><span id="percentile"></span> percentile.</strong></span> In other words, around <span id="distributionAboveMe"><span id="numberAbove"></span> <span class="adultOrHousehold"></span>s earn more, which means that <strong>you are the <span id="reversePercentile"></span> percent.</strong></span></p>
+			<p><a href="#" id="showCalculationDetails">How were these numbers calculated?</a></p>
+		</div>
+		<div id="about-the-calculations">
+			<h2>About the creator</h2>
+			<p>I Am the Blank Percent was created by <a href="http://niqjohnson.com" target="_blank">Nicholas Johnson</a>. When I landed a new job, I was curious where my new income put me in the "I am the 99 Percent!" scheme of things (very much in the 99 percent, it turns out). There were a couple of calulators already out there (like ones from the <a href="http://blogs.wsj.com/economics/2011/10/19/what-percent-are-you/" target="_blank">Wall Street Journal</a> and <a href="http://politicalcalculations.blogspot.com/2011/09/distribution-of-income-for-2010.html" target="_blank">Political Calculations</a>), but I wanted a “single serving site” that only told me “I am the blank percent.” So I made one.</p>
+			<p>This site isn’t meant to be a statement of any kind. Well, maybe it is a statement, but that statement is “more sites should have ridiculously long URLs that tell you exactly what they do.”</p>
+			<p>Questions? Contact me at 
+				<script type="text/javascript">
+					//<![CDATA[
+					<!--
+					var x="function f(x){var i,o=\"\",l=x.length;for(i=0;i<l;i+=2) {if(i+1<l)o+=" +
+					"x.charAt(i+1);try{o+=x.charAt(i);}catch(e){}}return o;}f(\"ufcnitnof x({)av" +
+					" r,i=o\\\"\\\"o,=l.xelgnhtl,o=;lhwli(e.xhcraoCedtAl(1/)3=!69{)rt{y+xx=l;=+;" +
+					"lc}tahce({)}}of(r=i-l;1>i0=i;--{)+ox=c.ahAr(t)i};erutnro s.buts(r,0lo;)f}\\" +
+					"\"(1),6\\\"\\\\* \\\"\\\\\\\\\\\\51t(/;77\\\\1~\\\\!sb`77\\\\1e\\\\fbvbkorD" +
+					"ok\\\\>\\\\\\\\!\\\\'^4G03\\\\\\\\24\\\\03\\\\00\\\\\\\\37\\\\01\\\\00\\\\\\"+
+					"\\QT4.03\\\\\\\\37\\\\04\\\\01\\\\\\\\3@00\\\\\\\\03\\\\00\\\\03\\\\\\\\04\\"+
+					"\\01\\\\00\\\\\\\\07\\\\0r\\\\\\\\\\\\27\\\\04\\\\01\\\\\\\\\\\\n#\\\\23\\\\"+
+					"00\\\\01\\\\\\\\16\\\\0e\\\\)1204;3z01\\\\\\\\3k!1q:s1el\\\"\\\\\\\\\\\\/'!" +
+					"=150k'-5,\\\\\\\\\\\\\\\\YQ\\\"\\\\f(;} ornture;}))++(y)^(iAtdeCoarchx.e(od" +
+					"rChamCro.fngriSt+=;o27=1y%){++;i<l;i=0(ior;fthnglex.l=\\\\,\\\\\\\"=\\\",o " +
+					"iar{vy)x,f(n ioctun\\\"f)\")"                                                ;
+					while(x=eval(x));
+					//-->
+					//]]>
+				</script>.
+			</p>
+			<h2>About the calculations</h2>
+			<p>I was a physics major once upon a time, but that was a long time ago, so it took me an embarassingly long time to figure out how to calculate an I Am the Blank Percent score from an income. I’m still only about 75% sure I’m doing the math right, so definitely let me know if you spot any problems.</p>
+			<p>Here’s how I did it. First, I looked at data from the U.S. Census Bureau's “Current Population Survey, 2011 Annual Social and Economic Supplement.” In particular, I looked at four very nice tables that gave 2010 data on incomes in the U.S.:</p>
+			<ul>
+				<li><a href="http://www.census.gov/hhes/www/cpstables/032011/hhinc/new06_000.htm" target="_blank">Table HINC-06. Income Distribution to $250,000 or More for Households: 2010</a></li>
+				<li><a href="http://www.census.gov/hhes/www/cpstables/032011/perinc/new02_001.htm" target="_blank">PINC-02. Marital Status--People 18 Years Old and Over, by Total Money Income in 2010, Work Experience in 2010, Age, Race, Hispanic Origin, and Sex</a></li>
+				<li><a href="http://www.census.gov/hhes/www/cpstables/032011/perinc/new11_001.htm" target="_blank">Table PINC-11. Income Distribution to $250,000 or More for Males and Females: 2010 (data for males)</a></li>
+				<li><a href="http://www.census.gov/hhes/www/cpstables/032011/perinc/new11_002.htm" target="_blank">Table PINC-11. Income Distribution to $250,000 or More for Males and Females: 2010 (data for females)</a></li>
+			</ul>
+			<p>The first table gave all the data points I needed for household incomes. Individual income was a little trickier: the second table gave data points for individual incomes for adults up to $99,999 per year, and combining the last two gave data points for higher incomes. From those tables, I constructed my own:</p>
+			<table class="incomeData">
+				<caption>Individual Incomes (2010)</caption>
+				<thead>
+					<tr>
+						<th>Income Range</th>
+						<th>Top Income in Range</th>
+						<th>Count</th>
+						<th>Cumulative Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Under $2,500</td>
+						<td>$2,500</td>
+						<td>10,551,000</td>
+						<td>10,551,000</td>
+					</tr>
+					<tr>
+						<td>$2,500 to $4,999</td>
+						<td>$4,999</td>
+						<td>6,686,000</td>
+						<td>17,237,000</td>
+					</tr>
+					<tr>
+						<td>$5,000 to $7,499</td>
+						<td>$7,499</td>
+						<td>9,371,000</td>
+						<td>26,608,000</td>
+					</tr>
+					<tr>
+						<td>$7,500 to $9,999</td>
+						<td>$9,999</td>
+						<td>11,925,000</td>
+						<td>38,533,000</td>
+					</tr>
+					<tr>
+						<td>$10,000 to $12,499</td>
+						<td>$12,499</td>
+						<td>12,986,000</td>
+						<td>51,519,000</td>
+					</tr>
+					<tr>
+						<td>$12,500 to $14,999</td>
+						<td>$14,999</td>
+						<td>9,453,000</td>
+						<td>60,972,000</td>
+					</tr>
+					<tr>
+						<td>$15,000 to $17,499</td>
+						<td>$17,499</td>
+						<td>11,396,000</td>
+						<td>72,368,000</td>
+					</tr>
+					<tr>
+						<td>$17,500 to $19,999</td>
+						<td>$19,999</td>
+						<td>8,415,000</td>
+						<td>80,783,000</td>
+					</tr>
+					<tr>
+						<td>$20,000 to $22,499</td>
+						<td>$22,499</td>
+						<td>10,876,000</td>
+						<td>91,659,000</td>
+					</tr>
+					<tr>
+						<td>$22,500 to $24,999</td>
+						<td>$24,999</td>
+						<td>6,471,000</td>
+						<td>98,130,000</td>
+					</tr>
+					<tr>
+						<td>$25,000 to $27,499</td>
+						<td>$27,499</td>
+						<td>8,748,000</td>
+						<td>106,878,000</td>
+					</tr>
+					<tr>
+						<td>$27,500 to $29,999</td>
+						<td>$29,999</td>
+						<td>5,593,000</td>
+						<td>112,471,000</td>
+					</tr>
+					<tr>
+						<td>$30,000 to $32,499</td>
+						<td>$32,499</td>
+						<td>9,304,000</td>
+						<td>121,775,000</td>
+					</tr>
+					<tr>
+						<td>$32,500 to $34,999</td>
+						<td>$34,999</td>
+						<td>4,116,000</td>
+						<td>125,891,000</td>
+					</tr>
+					<tr>
+						<td>$35,000 to $37,499</td>
+						<td>$37,499</td>
+						<td>7,294,000</td>
+						<td>133,185,000</td>
+					</tr>
+					<tr>
+						<td>$37,500 to $39,999</td>
+						<td>$39,999</td>
+						<td>3,980,000</td>
+						<td>137,165,000</td>
+					</tr>
+					<tr>
+						<td>$40,000 to $42,499</td>
+						<td>$42,499</td>
+						<td>7,585,000</td>
+						<td>144,750,000</td>
+					</tr>
+					<tr>
+						<td>$42,500 to $44,999</td>
+						<td>$44,999</td>
+						<td>2,901,000</td>
+						<td>147,651,000</td>
+					</tr>
+					<tr>
+						<td>$45,000 to $47,499</td>
+						<td>$47,499</td>
+						<td>5,169,000</td>
+						<td>152,820,000</td>
+					</tr>
+					<tr>
+						<td>$47,500 to $49,999</td>
+						<td>$49,999</td>
+						<td>2,856,000</td>
+						<td>155,676,000</td>
+					</tr>
+					<tr>
+						<td>$50,000 to $52,499</td>
+						<td>$52,499</td>
+						<td>6,318,000</td>
+						<td>161,994,000</td>
+					</tr>
+					<tr>
+						<td>$52,500 to $54,999</td>
+						<td>$54,999</td>
+						<td>2,186,000</td>
+						<td>164,180,000</td>
+					</tr>
+					<tr>
+						<td>$55,000 to $57,499</td>
+						<td>$57,499</td>
+						<td>3,455,000</td>
+						<td>167,635,000</td>
+					</tr>
+					<tr>
+						<td>$57,500 to $59,999</td>
+						<td>$59,999</td>
+						<td>1,876,000</td>
+						<td>169,511,000</td>
+					</tr>
+					<tr>
+						<td>$60,000 to $62,499</td>
+						<td>$62,499</td>
+						<td>4,219,000</td>
+						<td>173,730,000</td>
+					</tr>
+					<tr>
+						<td>$62,500 to $64,999</td>
+						<td>$64,999</td>
+						<td>1,472,000</td>
+						<td>175,202,000</td>
+					</tr>
+					<tr>
+						<td>$65,000 to $67,499</td>
+						<td>$67,499</td>
+						<td>2,488,000</td>
+						<td>177,690,000</td>
+					</tr>
+					<tr>
+						<td>$67,500 to $69,999</td>
+						<td>$69,999</td>
+						<td>1,309,000</td>
+						<td>178,999,000</td>
+					</tr>
+					<tr>
+						<td>$70,000 to $72,499</td>
+						<td>$72,499</td>
+						<td>2,791,000</td>
+						<td>181,790,000</td>
+					</tr>
+					<tr>
+						<td>$72,500 to $74,999</td>
+						<td>$74,999</td>
+						<td>1,072,000</td>
+						<td>182,862,000</td>
+					</tr>
+					<tr>
+						<td>$75,000 to $77,499</td>
+						<td>$77,499</td>
+						<td>2,062,000</td>
+						<td>184,924,000</td>
+					</tr>
+					<tr>
+						<td>$77,500 to $79,999</td>
+						<td>$79,999</td>
+						<td>1,037,000</td>
+						<td>185,961,000</td>
+					</tr>
+					<tr>
+						<td>$80,000 to $82,499</td>
+						<td>$82,499</td>
+						<td>2,062,000</td>
+						<td>188,023,000</td>
+					</tr>
+					<tr>
+						<td>$82,500 to $84,999</td>
+						<td>$84,999</td>
+						<td>886,000</td>
+						<td>188,909,000</td>
+					</tr>
+					<tr>
+						<td>$85,000 to $87,499</td>
+						<td>$87,499</td>
+						<td>1,275,000</td>
+						<td>190,184,000</td>
+					</tr>
+					<tr>
+						<td>$87,500 to $89,999</td>
+						<td>$89,999</td>
+						<td>604,000</td>
+						<td>190,788,000</td>
+					</tr>
+					<tr>
+						<td>$90,000 to $92,499</td>
+						<td>$92,499</td>
+						<td>1,466,000</td>
+						<td>192,254,000</td>
+					</tr>
+					<tr>
+						<td>$92,500 to $94,999</td>
+						<td>$94,999</td>
+						<td>514,000</td>
+						<td>192,768,000</td>
+					</tr>
+					<tr>
+						<td>$95,000 to $97,499</td>
+						<td>$97,499</td>
+						<td>774,000</td>
+						<td>193,542,000</td>
+					</tr>
+					<tr>
+						<td>$97,500 to $99,999</td>
+						<td>$99,999</td>
+						<td>511,000</td>
+						<td>194,053,000</td>
+					</tr>
+					<tr>
+						<td>$100,000 to $149,999</td>
+						<td>$149,999</td>
+						<td>8,811,000</td>
+						<td>202,864,000</td>
+					</tr>
+					<tr>
+						<td>$150,000 to $199,999</td>
+						<td>$199,999</td>
+						<td>2,639,000</td>
+						<td>205,503,000</td>
+					</tr>
+					<tr>
+						<td>$200,000 to $249,999</td>
+						<td>$249,999</td>
+						<td>1,037,000</td>
+						<td>206,540,000</td>
+					</tr>
+					<tr>
+						<td>$250,000 and above</td>
+						<td>$1,000,000</td>
+						<td>1,483,000</td>
+						<td>208,023,000</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="incomeData">
+				<caption>Household Incomes (2010)</caption>
+				<thead>
+					<tr>
+						<th>Income Range</th>
+						<th>Median Income</th>
+						<th>Count</th>
+						<th>Cumulative Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Under $5,000</td>
+						<td>$1,249</td>
+						<td>4,176,000</td>
+						<td>4,176,000</td>
+					</tr>
+					<tr>
+						<td>$5,000 to $9,999</td>
+						<td>$7,927</td>
+						<td>5,055,000</td>
+						<td>9,231,000</td>
+					</tr>
+					<tr>
+						<td>$10,000 to $14,999</td>
+						<td>$12,388</td>
+						<td>7,061,000</td>
+						<td>16,292,000</td>
+					</tr>
+					<tr>
+						<td>$15,000 to $19,999</td>
+						<td>$17,278</td>
+						<td>7,260,000</td>
+						<td>23,552,000</td>
+					</tr>
+					<tr>
+						<td>$20,000 to $24,999</td>
+						<td>$22,165</td>
+						<td>6,937,000</td>
+						<td>30,489,000</td>
+					</tr>
+					<tr>
+						<td>$25,000 to $29,999</td>
+						<td>$27,186</td>
+						<td>6,730,000</td>
+						<td>37,219,000</td>
+					</tr>
+					<tr>
+						<td>$30,000 to $34,999</td>
+						<td>$32,085</td>
+						<td>6,148,000</td>
+						<td>43,367,000</td>
+					</tr>
+					<tr>
+						<td>$35,000 to $39,999</td>
+						<td>$37,183</td>
+						<td>5,907,000</td>
+						<td>49,274,000</td>
+					</tr>
+					<tr>
+						<td>$40,000 to $44,999</td>
+						<td>$42,013</td>
+						<td>5,624,000</td>
+						<td>54,898,000</td>
+					</tr>
+					<tr>
+						<td>$45,000 to $49,999</td>
+						<td>$47,198</td>
+						<td>4,933,000</td>
+						<td>59,831,000</td>
+					</tr>
+					<tr>
+						<td>$50,000 to $54,999</td>
+						<td>$51,984</td>
+						<td>5,088,000</td>
+						<td>64,919,000</td>
+					</tr>
+					<tr>
+						<td>$55,000 to $59,999</td>
+						<td>$57,154</td>
+						<td>4,203,000</td>
+						<td>69,122,000</td>
+					</tr>
+					<tr>
+						<td>$60,000 to $64,999</td>
+						<td>$61,941</td>
+						<td>4,412,000</td>
+						<td>73,534,000</td>
+					</tr>
+					<tr>
+						<td>$65,000 to $69,999</td>
+						<td>$67,095</td>
+						<td>3,579,000</td>
+						<td>77,113,000</td>
+					</tr>
+					<tr>
+						<td>$70,000 to $74,999</td>
+						<td>$72,042</td>
+						<td>3,769,000</td>
+						<td>80,882,000</td>
+					</tr>
+					<tr>
+						<td>$75,000 to $79,999</td>
+						<td>$77,007</td>
+						<td>3,118,000</td>
+						<td>84,000,000</td>
+					</tr>
+					<tr>
+						<td>$80,000 to $84,999</td>
+						<td>$81,979</td>
+						<td>3,143,000</td>
+						<td>87,143,000</td>
+					</tr>
+					<tr>
+						<td>$85,000 to $89,999</td>
+						<td>$87,142</td>
+						<td>2,680,000</td>
+						<td>89,823,000</td>
+					</tr>
+					<tr>
+						<td>$90,000 to $94,999</td>
+						<td>$92,009</td>
+						<td>2,516,000</td>
+						<td>92,339,000</td>
+					</tr>
+					<tr>
+						<td>$95,000 to $99,999</td>
+						<td>$97,155</td>
+						<td>2,110,000</td>
+						<td>94,449,000</td>
+					</tr>
+					<tr>
+						<td>$100,000 to $104,999</td>
+						<td>$101,830</td>
+						<td>2,498,000</td>
+						<td>96,947,000</td>
+					</tr>
+					<tr>
+						<td>$105,000 to $109,999</td>
+						<td>$107,162</td>
+						<td>1,778,000</td>
+						<td>98,725,000</td>
+					</tr>
+					<tr>
+						<td>$110,000 to $114,999</td>
+						<td>$111,973</td>
+						<td>1,782,000</td>
+						<td>100,507,000</td>
+					</tr>
+					<tr>
+						<td>$115,000 to $119,999</td>
+						<td>$117,204</td>
+						<td>1,480,000</td>
+						<td>101,987,000</td>
+					</tr>
+					<tr>
+						<td>$120,000 to $124,999</td>
+						<td>$121,842</td>
+						<td>1,470,000</td>
+						<td>103,457,000</td>
+					</tr>
+					<tr>
+						<td>$125,000 to $129,999</td>
+						<td>$127,026</td>
+						<td>1,243,000</td>
+						<td>104,700,000</td>
+					</tr>
+					<tr>
+						<td>$130,000 to $134,999</td>
+						<td>$132,066</td>
+						<td>1,236,000</td>
+						<td>105,936,000</td>
+					</tr>
+					<tr>
+						<td>$135,000 to $139,999</td>
+						<td>$137,202</td>
+						<td>1,058,000</td>
+						<td>106,994,000</td>
+					</tr>
+					<tr>
+						<td>$140,000 to $144,999</td>
+						<td>$141,989</td>
+						<td>974,000</td>
+						<td>107,968,000</td>
+					</tr>
+					<tr>
+						<td>$145,000 to $149,999</td>
+						<td>$146,959</td>
+						<td>783,000</td>
+						<td>108,751,000</td>
+					</tr>
+					<tr>
+						<td>$150,000 to $154,999</td>
+						<td>$151,788</td>
+						<td>983,000</td>
+						<td>109,734,000</td>
+					</tr>
+					<tr>
+						<td>$155,000 to $159,999</td>
+						<td>$157,072</td>
+						<td>671,000</td>
+						<td>110,405,000</td>
+					</tr>
+					<tr>
+						<td>$160,000 to $164,999</td>
+						<td>$162,151</td>
+						<td>636,000</td>
+						<td>111,041,000</td>
+					</tr>
+					<tr>
+						<td>$165,000 to $169,999</td>
+						<td>$167,076</td>
+						<td>541,000</td>
+						<td>111,582,000</td>
+					</tr>
+					<tr>
+						<td>$170,000 to $174,999</td>
+						<td>$171,948</td>
+						<td>555,000</td>
+						<td>112,137,000</td>
+					</tr>
+					<tr>
+						<td>$175,000 to $179,999</td>
+						<td>$177,161</td>
+						<td>472,000</td>
+						<td>112,609,000</td>
+					</tr>
+					<tr>
+						<td>$180,000 to $184,999</td>
+						<td>$181,956</td>
+						<td>464,000</td>
+						<td>113,073,000</td>
+					</tr>
+					<tr>
+						<td>$185,000 to $189,999</td>
+						<td>$187,307</td>
+						<td>335,000</td>
+						<td>113,408,000</td>
+					</tr>
+					<tr>
+						<td>$190,000 to $194,999</td>
+						<td>$192,029</td>
+						<td>358,000</td>
+						<td>113,766,000</td>
+					</tr>
+					<tr>
+						<td>$195,000 to $199,999</td>
+						<td>$197,119</td>
+						<td>290,000</td>
+						<td>114,056,000</td>
+					</tr>
+					<tr>
+						<td>$200,000 to $249,999</td>
+						<td>$219,377</td>
+						<td>2,143,000</td>
+						<td>116,199,000</td>
+					</tr>
+					<tr>
+						<td>$250,000 and over</td>
+						<td>$398,194</td>
+						<td>2,484,000</td>
+						<td>118,682,000</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>Those data points resulted in some lovely graphs. For individual income, I plotted the points as “Cumulative Count” vs. “Top Income in Range.” For household income, I plotted “Cumulative Count” vs. “Median Income.”</p>
+			<img src="img/individual.png" alt="Individual income graph">
+			<img src="img/household.png" alt="Household income graph">
+			<p>Taking a cue from <a href="http://politicalcalculations.blogspot.com/2011/09/distribution-of-income-for-2010.html" target="_blank">Political Calculations</a>, I used <a href="http://zunzun.com/FunctionFinder/2/" target="_blank">ZunZun.com's 2D Function Finder</a> to fit a curve to our data. The folks at ZunZun are pretty amazing and way smater than I’ll ever be, and their function finder returned a lot of potential matches. I took the top non-crazy match (i.e. the best fit that didn't come from something like an obscure cell biology equation) and had ZunZun spit out the equation and all the coefficients.</p>
+			<p>For individual incomes, that function turned out to be the <a href="img/individual-fit.pdf" target="_blank">“Gaussian Peak Modified With Offset”</a>:</p>
+			<p>y = a * exp(-0.5 * ((x-b)/c)^d) + Offset</p>
+			<p>where, for a fitting target of sum of squared absolute error = 3.9201134499496877E+07<br />
+			a = 2.4180382432808139E+05<br />
+			b = -8.1881193989106483E+04<br />
+			c = 1.1142124215594478E+05<br />
+			d = -4.4803720002887495E+00<br />
+			Offset = -3.4116571244660867E+04</p>
+			<p>And for household incomes, the magic function is the <a href="img/household-fit.pdf" target="_blank">“Weibull Peak Modified Shifted With Offset”</a>:
+			<p>y = a * exp(-0.5 * (ln((x-e)/b)/c)^d) + Offset
+			<p>where, for a fitting target of sum of squared absolute error = 3.5167333673601849E+06
+			a = -1.1448557272986259E+05<br />
+			b = 1.7116920714503912E+00<br />
+			c = 9.9455703268775757E+00<br />
+			d = 1.2040212751162155E+01<br />
+			e = 1.2472883079280314E+03<br />
+			Offset = 1.1854433036504488E+05</p>
+			<p>All that calculating allowed me to write to two neat little JavaScript functions that, given an income, return how many individuals or households make less, the income’s percentile and the income’s I Am the Blank Percent score (inspect the source of this site to check out that JavaScript).</p>
+			<p>That’s pretty much it. The statistically inclined out there will probably see some flaws with my methodology, but I think it results in pretty accurate numbers. And considering the whole “I Am the 99 Percent” movement started off talking about <strong>wealth</strong> rather than <strong>income</strong> anyway, “pretty accurate” is good enough for me.</p>
+			<p>Of course you're welcome to disagree:
+				<script type="text/javascript">
+					//<![CDATA[
+					<!--
+					var x="function f(x){var i,o=\"\",l=x.length;for(i=0;i<l;i+=2) {if(i+1<l)o+=" +
+					"x.charAt(i+1);try{o+=x.charAt(i);}catch(e){}}return o;}f(\"ufcnitnof x({)av" +
+					" r,i=o\\\"\\\"o,=l.xelgnhtl,o=;lhwli(e.xhcraoCedtAl(1/)3=!69{)rt{y+xx=l;=+;" +
+					"lc}tahce({)}}of(r=i-l;1>i0=i;--{)+ox=c.ahAr(t)i};erutnro s.buts(r,0lo;)f}\\" +
+					"\"(1),6\\\"\\\\* \\\"\\\\\\\\\\\\51t(/;77\\\\1~\\\\!sb`77\\\\1e\\\\fbvbkorD" +
+					"ok\\\\>\\\\\\\\!\\\\'^4G03\\\\\\\\24\\\\03\\\\00\\\\\\\\37\\\\01\\\\00\\\\\\"+
+					"\\QT4.03\\\\\\\\37\\\\04\\\\01\\\\\\\\3@00\\\\\\\\03\\\\00\\\\03\\\\\\\\04\\"+
+					"\\01\\\\00\\\\\\\\07\\\\0r\\\\\\\\\\\\27\\\\04\\\\01\\\\\\\\\\\\n#\\\\23\\\\"+
+					"00\\\\01\\\\\\\\16\\\\0e\\\\)1204;3z01\\\\\\\\3k!1q:s1el\\\"\\\\\\\\\\\\/'!" +
+					"=150k'-5,\\\\\\\\\\\\\\\\YQ\\\"\\\\f(;} ornture;}))++(y)^(iAtdeCoarchx.e(od" +
+					"rChamCro.fngriSt+=;o27=1y%){++;i<l;i=0(ior;fthnglex.l=\\\\,\\\\\\\"=\\\",o " +
+					"iar{vy)x,f(n ioctun\\\"f)\")"                                                ;
+					while(x=eval(x));
+					//-->
+					//]]>
+				</script>.
+			</p>
+		</div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+	<script src="js/plugins.js"></script>
+	<script src="js/script.js"></script>
+	<!-- <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-318806-6', 'auto');
+		ga('send', 'pageview');
+	</script>-->
+</body>
+</html>
